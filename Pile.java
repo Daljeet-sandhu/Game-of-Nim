@@ -1,71 +1,67 @@
+//Daljeet Singh 105165075
+//Assignment 3 Problem 7
+
 public class Pile 
 {
-   private int initialNumberOfMarbles; // Initial number of marbles in a round
-   private int currentNumberOfMarbles; // Current number of marbles in a round
+    private int initialNumberOfMarbles;
+    private int currentNumberOfMarbles;                         //declaring variables
 
-   public Pile(int numberOfMarbles) 
-     {
-	   currentNumberOfMarbles = numberOfMarbles;
-	   initialNumberOfMarbles = numberOfMarbles;
-     }
+    public Pile(int numberOfMarbles)
+    {
+        this.initialNumberOfMarbles = numberOfMarbles;
+        this.currentNumberOfMarbles = numberOfMarbles;
+    }
 
+    public int getInitialNumberOfMarbles()
+    {
+        return initialNumberOfMarbles;
+    }
 
-   public int getInitialNumberOfMarbles() 
-     {
-	   return initialNumberOfMarbles;
-     }
-                                                                                                    //getters and setters
-   public void setInitialNumberOfMarbles(int numberOfMarbles) 
-     {
-	   initialNumberOfMarbles = numberOfMarbles;
-     }
+    public void setInitialNumberOfMarbles(int initialNumberOfMarbles) 
+    {
+        this.initialNumberOfMarbles = initialNumberOfMarbles;
+    }
  
-   public int getCurrentNumberOfMarbles() 
-   {
-	   return currentNumberOfMarbles;
-   }
+    public int getCurrentNumberOfMarbles()
+    {
+        return currentNumberOfMarbles;
+    }
+ 
+    public void setCurrentNumberOfMarbles(int numberOfMarbles) 
+    {
+        this.currentNumberOfMarbles = numberOfMarbles;
+    }
 
-
-   private void setCurrentNumberOfMarbles(int numberOfMarbles) 
-   {
-	   currentNumberOfMarbles = currentNumberOfMarbles - numberOfMarbles;
-   }
- 
-   public boolean takeMarbles(int number) 
-   {
-	   if(number > 0 && number <= currentNumberOfMarbles/2) 
-	   {
-		   setCurrentNumberOfMarbles(number);
-		   return true;                                                  //removing marbles
-	   }
-	   else
-		   return false;		   
-   }
- 
-   public String showPile() 
-   {
-	   int num_of_Marbles = getCurrentNumberOfMarbles() ;
-	   int count = 0;
-	   
-	   String result = "";
-	   while(num_of_Marbles !=0)
-	   {
-		   result = result + "*";
-	       num_of_Marbles--;
-	       count++;
-	       if (count == 10) 
-	       {
-	    	   count = 0;
-	    	   result = result + "\n";
-	       }
-	   }
-	   
-	   return result;
-	   
-   }
- 
-   public String toString() 
-   {
-	   return "Intial number of piles: " + getInitialNumberOfMarbles()  + ".\nCurrent number of piles: "+  getCurrentNumberOfMarbles() + "." ;
-   }
+    public boolean takeMarbles(int number) 
+    {
+        if ((number < 1) || (number > this.currentNumberOfMarbles/2))
+            return false;
+        else 
+        {
+            setCurrentNumberOfMarbles(this.currentNumberOfMarbles - number);
+            return true;
+        }
+    }
+    
+    public String showPile() 
+    {
+        String piles = "";
+        
+        for (int i=0; i<this.currentNumberOfMarbles; i++) 
+        {
+            if ((i != 0) && (i % 10 == 0))
+                piles += "\n";
+            
+            piles += "⊗ ";
+        }
+        
+        return piles;
+    }
+    
+    @Override
+    public String toString() 
+    {
+        return "Number of Marbles in the pile: " + this.currentNumberOfMarbles;
+    }
+    
 }

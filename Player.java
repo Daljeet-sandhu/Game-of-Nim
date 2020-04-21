@@ -1,62 +1,53 @@
+//Daljeet Singh 105165075
+//Assignment 3 Problem 7
+
 public abstract class Player 
 {
-    protected String name;       // Name of the player
-    private int numberOfPlays;      // Number of plays the player has played so far
-    private int score;                    // Current score of the player
- 
+    protected String name;
+    private int numberOfPlays;                        //declaring variables
+    private int score;
     public Player() {}
 
     public Player(String name)
     {
-    	this.name = name;
+        this.name = name;                          
     }
-   
 
     public String getName() 
     {
-    	return name;
+        return name;                                   //returns name
     }
-
+ 
     public void setName(String name) 
     {
-    	this.name = name;
+        this.name = name;                                   //sets name
     }
-    	                                                     //getters and setters
-
+ 
     public int getNumberOfPlays() 
     {
-    	return numberOfPlays;
+        return numberOfPlays;                                  //returns numberOfPlays
     }
-
-
+ 
     public int getScore() 
     {
-    	return score;
+        return score;                                  //returns score
     }
-
-
+ 
     public void setNumberOfPlays(int number) 
     {
-    	numberOfPlays = numberOfPlays + number;
+        this.numberOfPlays = number;
     }
-
-
+    
     public void setScore(int number) 
     {
-    	score = score + number;
+        this.score = number;
     }
-
- 
-    /* At this level, ignore the body of the following method. We
- will learn the reason we need this method later on and how to
- develop it.
- */
     
     public abstract int play(Pile pile);
-
-
+    
+    @Override
     public String toString() 
     {
-      return "Player Name: " + getName() + ", Number of Plays: " + getNumberOfPlays() + ", Score: " + getScore(); 
+        return "Player Name: " + this.name + ", Number of Plays: " + this.getNumberOfPlays() +  ", Score: " + this.getScore();
     }
 }
